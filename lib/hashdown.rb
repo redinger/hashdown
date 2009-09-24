@@ -38,3 +38,7 @@ module Rubysolo # :nodoc:
 
   end # Hashdown
 end # Rubysolo
+
+ActiveRecord::Base.class_eval do
+  include Rubysolo::Hashdown
+end

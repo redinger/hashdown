@@ -1,5 +1,10 @@
 require 'spec'
-require 'mocha'
+begin
+  require 'mocha'
+rescue LoadError
+  require "rubygems"
+  require 'mocha'
+end
 
 Spec::Runner.configure do |config|
   config.mock_with :mocha
