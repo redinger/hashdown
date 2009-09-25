@@ -39,6 +39,11 @@ This is roughly equivalent to the following implementation:
 
 ...except it adds ActiveSupport caching for speedy lookups.
 
+== Cache
+By default caching is enabled. To disable it for select lists:
+
+  selectable :cache => false
+
 == COMING SOON:
 
 * configuration for key / value generation

@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{hashdown}
-  s.version = "0.1.1"
+  s.version = "0.1.2"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Solomon White", "Christopher Redinger"]
-  s.date = %q{2009-09-24}
+  s.date = %q{2009-09-25}
   s.description = %q{hashdown is a super lightweight rails plugin that adds hash-style lookups and option lists (for generating dropdowns) to ActiveRecord models}
   s.email = %q{redinger@gmail.com}
   s.extra_rdoc_files = [

@@ -1,2 +1,5 @@
+== 0.1.2
+* Added :cache to selectable true (default) uses cache, false disables
+
 == 0.1.1
 * gemified by Christopher Redinger

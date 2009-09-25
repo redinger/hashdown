@@ -8,7 +8,7 @@ module Rubysolo # :nodoc:
           self.cache_store ||= ActiveSupport::Cache::MemoryStore.new
 
           def self.select_options(*args)
-            cache_store.fetch("select_options:#{args.hash}", :force => Rubysolo::Hashdown.force_cache_miss?) {
+            cache(args) do
               options = args.extract_options!
               options[:value] ||= args.shift || selectable_options[:value]
 
@@ -23,11 +23,19 @@ module Rubysolo # :nodoc:
               find_options[:order] ||= options[:value] if has_column?(options[:value])
 
               find(:all, find_options).map{|record| record.to_pair(options[:key], options[:value]) }
-            }.dup
+            end.dup
           end
 
           def self.has_column?(column_name)
             columns.map{|c| c.name }.include?(column_name.to_s)
+          end
+          
+          def cache(args, &block)
+            if selectable_options[:cache] == false
+              yield
+            else
+              cache_store.fetch("select_options:#{args.hash}", :force => Rubysolo::Hashdown.force_cache_miss?, &block)
+            end
           end
         end
       end

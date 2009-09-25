@@ -61,6 +61,11 @@ class State < ActiveRecord::Base
   selectable
 end
 
+class NonCachedState < ActiveRecord::Base
+  selectable :cache => false
+  set_table_name 'states'
+end
+
 class CustomDisplay < ActiveRecord::Base
   selectable
   set_table_name 'states'

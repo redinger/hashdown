@@ -50,6 +50,15 @@ describe "an ActiveRecord model with selectable defined" do
       State.select_options.length.should == State.count
     end
   end
+  
+  it "should not store result in cache when cache is false" do
+    @states = NonCachedState.all
+    NonCachedState.expects(:find).times(5).returns(@states)
+
+    5.times do
+      NonCachedState.select_options.length.should == State.count
+    end    
+  end
 
   it "should not default non-column ordering" do
     lambda{ CustomDisplay.select_options }.should_not raise_error
